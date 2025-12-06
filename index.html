@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julieta Cerisola | Contadora Pública | Asesorías Contables & Fiscales</title>
+    <link rel="icon" type="image/x-icon" href="Imagenes/Logo Principal.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="nav-logo">
+                    <img src="Imagenes/Logo.webp" alt="Julieta Cerisola Logo" style="height: 50px; width: auto;">
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#about">Sobre Mí</a></li>
+                    <li><a href="#testimonials">Testimonios</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#contact" class="btn" style="padding: 8px 20px; font-size: 0.9rem;">Contacto</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+    </script>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Contadora Pública | Asesorías Contables & Fiscales<br>Para tu tranquilidad fiscal.</h1>
+           
+            <a href="https://wa.me/5493364290664?text=Hola%20Julieta%2C%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20tus%20servicios%20contables." class="btn">INICIAR CONTACTO POR WHATSAPP</a>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="about-card-new">
+                <div class="about-header">
+                    <h2 class="about-title-main">Sobre mí</h2>
+                    <div class="about-divider"></div>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-img-section">
+                        <img class="about-profile-img" src="Imagenes/Julieta Cerisola.webp" alt="Julieta Cerisola - Contadora">
+                    </div>
+                    
+                    <div class="about-text-section">
+                        <p class="about-intro"><strong>Hola, soy Julieta Cerisola</strong>, Contadora Pública | C.P.C.E.P.B.A. T°188 F°18 Leg. 490237</p>
+                        
+                        <p>Especializada en asesoramiento contable integral para emprendedores, profesionales y pequeñas empresas.</p>
+
+                        <p>Contadora Pública especializada en <strong>asesoramiento contable & fiscal</strong> para emprendedores, profesionales y empresas que buscan crecer con claridad.</p>
+                        
+                        <p>Mi enfoque es <strong>simplificar lo complejo</strong>. Entiendo que los números pueden ser abrumadores, por eso trabajo cada caso con paciencia y dedicación, traduciéndolo a términos que realmente entiendas.</p>
+                        
+                        <p>Creo que una buena contabilidad no es un trámite burocrático, sino <strong>tu mejor aliada estratégica</strong> para tomar decisiones informadas y crecer sin riesgos.</p>
+                        
+                        <p class="about-closing"><strong>Tu tranquilidad financiera es mi prioridad.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Testimonios</h2>
+            <p class="section-subtitle">Clientes que ya confían en el estudio contable.</p>
+
+            <div class="testimonial-grid">
+
+                <article class="testimonial-card">
+                    <p class="testimonial-text">“Un excelente profesional, es quien se desempeña a diario con esmero y dedicación. Pero antes de ser un buen profesional, fue también una excelente persona. Gracias al estudio contable Julieta Cerisola por acompañar siempre con calidez y sinceridad, compromiso y dedicación. Un trabajo de excelencia.”</p>
+                    <span class="author">Victoria — Traductora de inglés</span>
+                </article>
+
+                <article class="testimonial-card">
+                    <p class="testimonial-text">“Excelente rápida solución a mis problemas de monotributo. ¡Mil gracias! Me brindó claridad en cada paso y ahora tengo todo al día sin demoras ni sorpresas.”</p>
+                    <span class="author">Jorge — Transportista</span>
+                </article>
+
+                <article class="testimonial-card">
+                    <p class="testimonial-text">“Super agradecida con vos por ser muy profesional y buena persona. Me ayudaste a ordenar la facturación del local y a entender qué podía deducir sin complicarme.”</p>
+                    <span class="author">María — Local de indumentaria femenina</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Servicios del Estudio Contable</h2>
+            <p class="section-subtitle">Todos los planes se arman de forma personalizada de acuerdo a tus necesidades. Te ayudamos a crecer con respaldo profesional.</p>
+
+            <div class="services-grid">
+                <!-- MONOTRIBUTO -->
+                <article class="service-card">
+                    <span class="price-tag">📊 Para Emprendedores</span>
+                    <h3>Monotributo</h3>
+                    <p>Ideal si estás dando tus primeros pasos como emprendedor o ya sos monotributista y querés crecer con respaldo profesional.</p>
+                    <p style="font-weight: 600; color: var(--primary-color); margin-top: 15px;">¿Qué ofrecemos?</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Presentación de todas tus obligaciones mensuales</li>
+                        <li><i class="fas fa-check"></i> Asesoramiento impositivo y acompañamiento en trámites ante el fisco</li>
+                        <li><i class="fas fa-check"></i> Facturación mensual</li>
+                        <li><i class="fas fa-check"></i> Recategorizaciones semestrales</li>
+                        <li><i class="fas fa-check"></i> Seguimiento de tu facturación</li>
+                        <li><i class="fas fa-check"></i> Asesoramiento constante por WhatsApp</li>
+                        <li><i class="fas fa-check"></i> Generación de VEPS</li>
+                        <li><i class="fas fa-check"></i> Liquidación de Sueldos (si corresponde)</li>
+                    </ul>
+                </article>
+
+                <!-- RESPONSABLE INSCRIPTO -->
+                <article class="service-card">
+                    <span class="price-tag">📈 En Crecimiento</span>
+                    <h3>Responsable Inscripto</h3>
+                    <p>Pensado para negocios en crecimiento que necesitan una gestión impositiva integral y ordenada.</p>
+                    <p style="font-weight: 600; color: var(--primary-color); margin-top: 15px;">¿Qué ofrecemos?</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Asesoramiento integral y diseño de camino fiscal</li>
+                        <li><i class="fas fa-check"></i> Asesoramiento impositivo y trámites con el fisco</li>
+                        <li><i class="fas fa-check"></i> Calendario de vencimiento mensual</li>
+                        <li><i class="fas fa-check"></i> Presentaciones IVA, Ingresos Brutos, Municipalidad y Regímenes</li>
+                        <li><i class="fas fa-check"></i> Impuesto a las Ganancias y Bienes Personales anuales</li>
+                        <li><i class="fas fa-check"></i> Liquidación de Sueldos</li>
+                        <li><i class="fas fa-check"></i> Planilla de Excel para Ventas y Compras</li>
+                    </ul>
+                </article>
+
+                <!-- SOCIEDADES -->
+                <article class="service-card">
+                    <span class="price-tag">🏢 Empresas</span>
+                    <h3>Sociedades</h3>
+                    <p>Si tenés una empresa en marcha, este plan es para ti. Gestión contable integral y formalidad total.</p>
+                    <p style="font-weight: 600; color: var(--primary-color); margin-top: 15px;">¿Qué ofrecemos?</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Asesoramiento integral para potenciar tu empresa</li>
+                        <li><i class="fas fa-check"></i> Asesoramiento impositivo y trámites con el fisco</li>
+                        <li><i class="fas fa-check"></i> Calendario de vencimiento mensual</li>
+                        <li><i class="fas fa-check"></i> Presentaciones IVA, Ingresos Brutos y Regímenes</li>
+                        <li><i class="fas fa-check"></i> Impuestos anuales (Ganancias y Bienes Personales)</li>
+                        <li><i class="fas fa-check"></i> Liquidación de Sueldos</li>
+                        <li><i class="fas fa-check"></i> Estados Contables (Balances)</li>
+                    </ul>
+                </article>
+            </div>
+
+            <!-- AUDITORÍA FISCAL -->
+            <div class="audit-section">
+                <div class="audit-content">
+                    <h3><i class="fas fa-search-dollar"></i> Auditoría Fiscal Integral</h3>
+                    <p style="margin-bottom: 15px; color: #e8d4f0;"><strong>¿Te inscribiste solo en ARCA? ¿Hace mucho que no revisás tu situación con un contador?</strong></p>
+                    <p style="color: #e8d4f0;">Realizamos una revisión completa de tu situación tributaria en ARCA y otros organismos para asegurarnos de que todo esté correcto y actualizado.</p>
+                    <p style="margin-top: 20px; font-weight: 600; color: var(--accent-light);">¿Qué incluye?</p>
+                    <ul style="margin-left: 0; padding-left: 20px;">
+                        <li style="color: rgba(255,255,255,0.9); margin-bottom: 10px;"><strong>Diagnóstico impositivo completo:</strong> Análisis de tu información fiscal en ARCA, ARBA/AGIP u otros organismos</li>
+                        <li style="color: rgba(255,255,255,0.9); margin-bottom: 10px;"><strong>Detección de errores y riesgos:</strong> Revisión de datos, actividades, inconsistencias y posibles sanciones</li>
+                        <li style="color: rgba(255,255,255,0.9); margin-bottom: 10px;"><strong>Informe detallado por mail:</strong> Reporte claro con hallazgos, explicaciones y recomendaciones</li>
+                        <li style="color: rgba(255,255,255,0.9); margin-bottom: 10px;"><strong>Corrección de errores:</strong> Regularizaciones necesarias (inscripciones, ajustes, declaraciones omitidas)</li>
+                        <li style="color: rgba(255,255,255,0.9);"><strong>Propuesta de mejora:</strong> Sugerencias para ordenar tu situación y evitar inconvenientes futuros</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/5493364290664?text=Hola%20Julieta%2C%20quisiera%20solicitar%20una%20auditor%C3%ADa%20fiscal%20integral." class="btn" style="background: var(--white); color: var(--primary-color); font-weight: 700; white-space: nowrap;">SOLICITAR AUDITORÍA</a>
+            </div>
+
+            <!-- OTROS SERVICIOS -->
+            <div style="background-color: var(--white); padding: 50px; border-radius: 12px; margin-top: 50px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                <h3 class="otros-servicios-title">Otros Servicios</h3>
+                <div class="otros-servicios-grid">
+                    <div class="otros-servicio-card">
+                        <h4>📜 Certificación de Ingresos</h4>
+                        <p>Para provincia de Buenos Aires y CABA. Servicio destinado a personas físicas, monotributistas, responsables inscriptos y sociedades que necesitan documentación formal respaldada por una Contadora Pública matriculada.</p>
+                    </div>
+                    <div class="otros-servicio-card">
+                        <h4>📋 Presentación SIRADIG F572</h4>
+                        <p>Información de deducciones de ganancias para reducir retenciones. Optimiza tu carga tributaria con deducciones correctamente documentadas.</p>
+                    </div>
+                    <div class="otros-servicio-card">
+                        <h4>💰 Solicitud de Beneficios y Devoluciones</h4>
+                        <p>Gestión de:</p>
+                        <ul>
+                            <li>Subsidios y exenciones</li>
+                            <li>Devoluciones (Impuesto País)</li>
+                            <li>Planes de pago y regularizaciones</li>
+                        </ul>
+                    </div>
+                    <div class="otros-servicio-card">
+                        <h4>📊 Bienes Personales / Ganancias</h4>
+                        <p>Análisis y presentación de declaraciones juradas. Te ayudamos a presentar correctamente y optimizar tu situación fiscal anual.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TRÁMITES PUNTUALES -->
+            <div style="text-align: center; margin-top: 50px;">
+                <h4 class="tramites-title">También resolvemos trámites puntuales</h4>
+                <div class="tramites-list mejorada">
+                    <div class="tramite-pill">Certificación de Ingresos</div>
+                    <div class="tramite-pill">Formulario SIRADIG</div>
+                    <div class="tramite-pill">Devoluciones Impuesto País</div>
+                    <div class="tramite-pill">Bienes Personales</div>
+                    <div class="tramite-pill">Planes de Pago</div>
+                    <div class="tramite-pill">Regularizaciones</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-card">
+                <div class="newsletter-icon">
+                    <i class="fas fa-envelope-open-text"></i>
+                </div>
+                <h2 class="newsletter-title">Consejos Fiscales en tu Bandeja</h2>
+                <p class="newsletter-subtitle">Recibí tips claros, estrategias tributarias y recordatorios de vencimientos. Todo diseñado para simplificar tu gestión fiscal.</p>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Tu nombre" required>
+                        <input type="text" placeholder="Tu apellido" required>
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit" class="newsletter-btn">SUSCRIBIRME</button>
+                    </div>
+                </form>
+                <p class="newsletter-note">Te enviaremos tips valiosos sin spam. Puedes darte de baja en cualquier momento.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-header">
+                <img src="Imagenes/Logo.webp" alt="Julieta Cerisola Logo" class="footer-logo">
+            </div>
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>Julieta Cerisola</h4>
+                    <p>Contadora Pública | C.P.C.E.P.B.A. T°188 F°18 Leg. 490237<br>Especializada en asesoramiento fiscal simplificado para emprendedores y empresas.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/5493364290664" style="color: #25D366; font-weight: bold;">3364 29-0664</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:cerisolajulieta@gmail.com" style="color: var(--accent-light);">cerisolajulieta@gmail.com</a></li>
+                        <li><i class="fas fa-link"></i> <a href="https://julietacerisola.estudio" style="color: var(--accent-light);">julietacerisola.estudio</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Argentina</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Mis redes</h4>
+                    <div class="social-icons">
+                        <a href="https://instagram.com/julietacerisola.estudio" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/julieta-cerisola-a2ba86351?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://beacons.ai/julietacerisola.estudio" target="_blank" title="Más enlaces"><i class="fas fa-link"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #445; padding-top: 20px; font-size: 0.8rem;">
+                Asesoramiento contable & fiscal de calidad. &copy; 2025 Julieta Cerisola - Contadora Pública.
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP BUTTON -->
+    <a href="https://wa.me/5493364290664?text=Hola%20Julieta%2C%20quisiera%20asesorarme%20contigo." class="whatsapp-btn" target="_blank" title="Contactame por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
