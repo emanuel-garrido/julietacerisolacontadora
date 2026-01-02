@@ -589,14 +589,17 @@
                 flex-direction: column;
                 gap: 0;
                 align-items: flex-start;
-                padding: 16px;
-                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-                max-height: 0;
+                padding: 0;
+                box-shadow: none;
+                display: none;
                 overflow: hidden;
-                transition: max-height 0.3s ease;
             }
 
+            /* Mostrar el menú únicamente cuando tenga la clase active (al abrir) */
             .nav-links.active {
+                display: flex;
+                padding: 16px;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
                 max-height: 500px;
             }
 
