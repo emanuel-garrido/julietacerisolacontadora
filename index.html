@@ -108,9 +108,8 @@
 
             <div class="studio-text">
                 <h2 class="section-title">Estudio Contable Virtual</h2>
-                <p class="section-subtitle">Estudio Contable 100% virtual
-Atendemos de forma 100% online para que puedas resolver todo sin moverte: reuniones por videollamada, envío de documentación digital y seguimiento por WhatsApp, videollamadas y mail.
-Trabajamos con un sistema ordenado y simple para que tengas tus impuestos, vencimientos y reportes al día, con acompañamiento cercano desde el momento 0.</p>
+                <p class="section-subtitle">Atendemos de forma 100% online para que puedas resolver todo sin moverte: reuniones por videollamada, envío de documentación digital. Seguimiento por WhatsApp y email.
+                    Trabajamos con un sistema ordenado y simple para que tengas tus impuestos, vencimientos y reportes al día, con acompañamiento cercano desde el momento 0.</p>
                 <p></p>
                 <p style="margin-top:18px;"><a href="#contact" class="btn">Contactame</a></p>
             </div>
@@ -431,6 +430,147 @@ Trabajamos con un sistema ordenado y simple para que tengas tus impuestos, venci
         // Inicializar
         createIndicators();
         refreshAndUpdate();
+    </script>
+
+    <script>
+        // Soporte táctil para deslizar el carrusel en móviles/tablets
+        (function(){
+            const carousel = document.querySelector('.testimonial-carousel');
+            const track = document.querySelector('.testimonial-track');
+            const cards = document.querySelectorAll('.testimonial-track .testimonial-card');
+            if (!carousel || !track || !cards.length) return;
+
+            let startX = 0;
+            let startY = 0;
+            let currentX = 0;
+            let isDragging = false;
+            const threshold = 50; // px necesarios para considerar un swipe
+            let wheelAccum = 0; // acumulador para movimientos de wheel/trackpad
+
+            function cardWidth() {
+                return cards[0].getBoundingClientRect().width;
+            }
+
+            // --- Touch (móviles/tablets)
+            carousel.addEventListener('touchstart', function(e){
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+                currentX = startX;
+                isDragging = true;
+                track.style.transition = 'none';
+            }, {passive: true});
+
+            carousel.addEventListener('touchmove', function(e){
+                if (!isDragging) return;
+                const touch = e.touches[0];
+                const dx = touch.clientX - startX;
+                const dy = touch.clientY - startY;
+
+                // Si el movimiento vertical es mayor, dejamos que la página haga scroll
+                if (Math.abs(dy) > Math.abs(dx)) return;
+
+                currentX = touch.clientX;
+                const offset = (typeof currentIndex !== 'undefined' ? currentIndex : 0) * cardWidth();
+                track.style.transform = `translateX(-${offset - dx}px)`;
+            }, {passive: true});
+
+            carousel.addEventListener('touchend', function(){
+                if (!isDragging) return;
+                isDragging = false;
+                const moveX = currentX - startX;
+                track.style.transition = '';
+
+                if (Math.abs(moveX) > threshold) {
+                    if (moveX < 0) {
+                        currentIndex = Math.min(totalCards - 1, currentIndex + 1);
+                    } else {
+                        currentIndex = Math.max(0, currentIndex - 1);
+                    }
+                }
+
+                if (typeof updateCarousel === 'function') updateCarousel();
+                else track.style.transform = `translateX(-${currentIndex * cardWidth()}px)`;
+            });
+
+            carousel.addEventListener('touchcancel', function(){
+                isDragging = false;
+                if (typeof updateCarousel === 'function') updateCarousel();
+            });
+
+            // --- Mouse drag (desktop, touchpad that emulates mouse drag)
+            carousel.addEventListener('mousedown', function(e){
+                startX = e.clientX;
+                startY = e.clientY;
+                currentX = startX;
+                isDragging = true;
+                track.style.transition = 'none';
+                carousel.classList.add('dragging');
+                e.preventDefault();
+            });
+
+            window.addEventListener('mousemove', function(e){
+                if (!isDragging) return;
+                const dx = e.clientX - startX;
+                const dy = e.clientY - startY;
+                if (Math.abs(dy) > Math.abs(dx)) return;
+                currentX = e.clientX;
+                const offset = (typeof currentIndex !== 'undefined' ? currentIndex : 0) * cardWidth();
+                track.style.transform = `translateX(-${offset - dx}px)`;
+            });
+
+            window.addEventListener('mouseup', function(){
+                if (!isDragging) return;
+                isDragging = false;
+                carousel.classList.remove('dragging');
+                const moveX = currentX - startX;
+                track.style.transition = '';
+
+                if (Math.abs(moveX) > threshold) {
+                    if (moveX < 0) currentIndex = Math.min(totalCards - 1, currentIndex + 1);
+                    else currentIndex = Math.max(0, currentIndex - 1);
+                }
+
+                if (typeof updateCarousel === 'function') updateCarousel();
+                else track.style.transform = `translateX(-${currentIndex * cardWidth()}px)`;
+            });
+
+            // --- Wheel (especialmente útil para trackpads que generan wheel deltas)
+            let lastWheelTime = 0;
+            const wheelDebounce = 300; // milisegundos mínimos entre cambios
+            
+            carousel.addEventListener('wheel', function(e){
+                // Si el usuario está desplazando mayormente en vertical, no interferimos
+                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) return;
+
+                const now = Date.now();
+                // Solo procesar si ha pasado suficiente tiempo desde el último cambio
+                if (now - lastWheelTime < wheelDebounce) {
+                    e.preventDefault();
+                    return;
+                }
+
+                // Acumular deltaX (o -deltaY si no hay deltaX)
+                const delta = e.deltaX || -e.deltaY;
+                wheelAccum += delta;
+
+                const wheelThreshold = 50; // threshold más bajo para sensibilidad
+                if (wheelAccum > wheelThreshold) {
+                    // swipe a la derecha -> siguiente
+                    currentIndex = Math.min(totalCards - 1, currentIndex + 1);
+                    wheelAccum = 0;
+                    lastWheelTime = now;
+                    if (typeof updateCarousel === 'function') updateCarousel();
+                    e.preventDefault();
+                } else if (wheelAccum < -wheelThreshold) {
+                    // swipe a la izquierda -> anterior
+                    currentIndex = Math.max(0, currentIndex - 1);
+                    wheelAccum = 0;
+                    lastWheelTime = now;
+                    if (typeof updateCarousel === 'function') updateCarousel();
+                    e.preventDefault();
+                }
+            }, {passive: false});
+        })();
     </script>
 
 </body>

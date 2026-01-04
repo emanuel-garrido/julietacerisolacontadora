@@ -1355,6 +1355,22 @@
             }
         }
 
+        /* Estilos para carrusel: estado de arrastre y mejora de interacción */
+        .testimonial-carousel {
+            touch-action: pan-y; /* permite scroll vertical pero deja pasar swipes horizontales al carrusel */
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .testimonial-carousel.dragging {
+            cursor: grabbing;
+        }
+
+        .testimonial-carousel.dragging .testimonial-track {
+            transition: none !important;
+        }
+
         /* --- SECCIÓN EL ESTUDIO --- */
         .studio-section {
             padding: 60px 0;
