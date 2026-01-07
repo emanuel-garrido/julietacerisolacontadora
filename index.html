@@ -340,11 +340,11 @@ Trabajamos con un sistema ordenado, simple y eficiente para que tengas tus impue
                 </div>
                 <h2 class="newsletter-title">Consejos Fiscales en tu Bandeja</h2>
                 <p class="newsletter-subtitle">Recibí tips claros, estrategias tributarias y recordatorios de vencimientos. Todo diseñado para simplificar tu gestión fiscal.</p>
-                <form class="newsletter-form">
+                <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                     <div class="form-group">
-                        <input type="text" placeholder="Tu nombre" required>
-                        <input type="text" placeholder="Tu apellido" required>
-                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <input type="text" name="nombre" placeholder="Tu nombre" required>
+                        <input type="text" name="apellido" placeholder="Tu apellido" required>
+                        <input type="email" name="email" placeholder="Tu correo electrónico" required>
                         <button type="submit" class="newsletter-btn">SUSCRIBIRME</button>
                     </div>
                 </form>
@@ -610,6 +610,6 @@ Trabajamos con un sistema ordenado, simple y eficiente para que tengas tus impue
             }, {passive: false});
         })();
     </script>
-
+    
 </body>
 </html>
