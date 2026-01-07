@@ -340,7 +340,7 @@ Trabajamos con un sistema ordenado, simple y eficiente para que tengas tus impue
                 </div>
                 <h2 class="newsletter-title">Consejos Fiscales en tu Bandeja</h2>
                 <p class="newsletter-subtitle">Recibí tips claros, estrategias tributarias y recordatorios de vencimientos. Todo diseñado para simplificar tu gestión fiscal.</p>
-                <form class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <form id="newsletterForm" class="newsletter-form" action="https://formspree.io/f/mkogdrwn" method="POST">
                     <div class="form-group">
                         <input type="text" name="nombre" placeholder="Tu nombre" required>
                         <input type="text" name="apellido" placeholder="Tu apellido" required>
@@ -348,6 +348,7 @@ Trabajamos con un sistema ordenado, simple y eficiente para que tengas tus impue
                         <button type="submit" class="newsletter-btn">SUSCRIBIRME</button>
                     </div>
                 </form>
+                <div id="newsletterResponse" class="newsletter-response" aria-live="polite" style="display:none; margin-top:18px; padding:12px; border-radius:8px;"></div>
                 <p class="newsletter-note">Te enviaremos tips valiosos sin spam. Puedes darte de baja en cualquier momento.</p>
             </div>
         </div>
@@ -610,6 +611,52 @@ Trabajamos con un sistema ordenado, simple y eficiente para que tengas tus impue
             }, {passive: false});
         })();
     </script>
-    
+
+    <script>
+    // Envío AJAX para newsletter (Formspree)
+    (function(){
+        const form = document.getElementById('newsletterForm');
+        const resp = document.getElementById('newsletterResponse');
+        if (!form || !resp) return;
+
+        form.addEventListener('submit', async function(e){
+            e.preventDefault();
+            resp.style.display = 'block';
+            resp.style.background = '#f0f0f0';
+            resp.style.color = '#222';
+            resp.textContent = 'Enviando...';
+
+            const data = new FormData(form);
+
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: data
+                });
+
+                if (res.ok) {
+                    resp.textContent = 'Gracias! Te suscribiste correctamente.';
+                    resp.style.background = '#4BB543';
+                    resp.style.color = '#fff';
+                    form.reset();
+                } else {
+                    let json = null;
+                    try { json = await res.json(); } catch(_){}
+                    resp.textContent = (json && json.error) ? json.error : 'Ocurrió un error. Intentá más tarde.';
+                    resp.style.background = '#E74C3C';
+                    resp.style.color = '#fff';
+                }
+            } catch (err) {
+                resp.textContent = 'Error de conexión. Intentá de nuevo.';
+                resp.style.background = '#E74C3C';
+                resp.style.color = '#fff';
+            }
+
+            setTimeout(()=>{ resp.style.display = 'none'; }, 6000);
+        });
+    })();
+    </script>
+
 </body>
 </html>
